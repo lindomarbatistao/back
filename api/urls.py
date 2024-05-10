@@ -9,7 +9,6 @@ urlpatterns = [
     path('clientes', views.listar_clientes),
     path('usuarios', views.ClientesView.as_view()),
     path('usuario/<int:pk>', views.ClientesDetailView.as_view()),
-    path('gerar_tabela', GerarTabela.as_view(), name='gerar_tabela'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

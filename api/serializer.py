@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Cliente, Ponto
+from .models import Cliente
 from django.contrib.auth.models import User
 
 class ClienteSerializer(serializers.ModelSerializer):
@@ -31,9 +31,5 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 
-class PontoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Ponto
-        fields = ('latitude', 'longitude')
 
     
