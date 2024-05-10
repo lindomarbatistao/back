@@ -22,7 +22,5 @@ urlpatterns = [
 
 
 
-#lindomar
-#12345678
-
-##X
+#@lin
+#123456

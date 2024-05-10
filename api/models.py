@@ -15,3 +15,7 @@ class Cliente(models.Model):
     numero = models.CharField(max_length=255)
     image = models.ImageField(upload_to=upload_image, blank=True, null=True)
 
+
+class Ponto(models.Model):
+    latitude = models.FloatField()
+    longitude = models.FloatField()

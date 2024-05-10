@@ -7,6 +7,9 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from rest_framework import status, serializers
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.permissions import AllowAny
+from rest_framework.views import APIView
+from .models import Ponto
+from .serializer import PontoSerializer
 
 
 @api_view(['GET', 'POST'])
@@ -43,4 +46,26 @@ class ClientesDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
 
-#################################################################
+
+
+class GerarTabela(APIView):
+    def get(self, request):
+        lat_inicio = -22.914309
+        lat_fim = -22.913961
+        lon_inicio = -47.068627
+        lon_fim = -47.068030
+        intervalo = 0.0001
+
+        tabela = []
+
+        lat_atual = lat_inicio
+        while lat_atual <= lat_fim:
+            lon_atual = lon_inicio
+            while lon_atual <= lon_fim:
+                ponto = Ponto(latitude=lat_atual, longitude=lon_atual)
+                tabela.append(ponto)
+                lon_atual += intervalo
+            lat_atual += intervalo
+
+        serializer = PontoSerializer(tabela, many=True)
+        return Response(serializer.data)
