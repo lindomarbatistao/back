@@ -47,7 +47,6 @@ class ClientesDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = ClienteSerializer
 
 
-
 class GerarTabela(APIView):
     def get(self, request):
         lat_inicio = -22.914309
